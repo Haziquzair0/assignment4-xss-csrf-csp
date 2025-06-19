@@ -1,5 +1,20 @@
-The TwoFactorCodeMail class is responsible for sending the 2FA code to the user's email. Here's how it works:
 
-Constructor: It takes the 2FA code as input when the mail is created and stores it in the $code property.
-build() Method: This method sets the email subject and specifies the Blade view (emails.two_factor_code) to use for the email content. The 2FA code is passed to the view using the with() method.
-In short, this class handles the email setup for sending the 2FA code to users.
+# Assignment 4: XSS, CSRF, and CSP Security in Laravel To-Do App
+
+## Content Security Policy (CSP)
+- Implemented via custom middleware (`app/Http/Middleware/ContentSecurityPolicy.php`).
+- Registered globally in `app/Http/Kernel.php`.
+- CSP header restricts all scripts, styles, images, and fonts to same-origin.
+
+## XSS Defense
+- All user-generated content is escaped using Blade’s `{{ }}` syntax.
+- No `{!! !!}` is used for user input.
+- Tested by entering `<script>alert(1)</script>` in forms; it is not executed.
+
+## CSRF Defense
+- All forms use the `@csrf` directive.
+- Laravel’s CSRF middleware is enabled by default.
+- Tested by removing the CSRF token and submitting a form; a 419 error is returned.
+
+## Same-Origin Policy
+- Enforced via CSP: `default-src 'self'`.
