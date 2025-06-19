@@ -1,4 +1,4 @@
-# Security Features
+# Assignment 4: XSS, CSRF, and CSP Security in Laravel To-Do App
 
 ## Content Security Policy (CSP)
 - Implemented via custom middleware (`app/Http/Middleware/ContentSecurityPolicy.php`).
